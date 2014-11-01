@@ -322,11 +322,13 @@ class MainWindow(QWidget):
 
     def closeEvent(self, e):
         """Override closeEvent to display a confirmation if needed."""
-        confirm_quit = config.get('ui', 'confirm-quit')
+        confirm_quit_tabs = config.get('ui', 'confirm-quit-tabs')
+        confirm_quit_downloads = config.get('ui', 'confirm-quit-downloads')
         count = self._tabbed_browser.count()
-        if confirm_quit == 'never':
+        # Confirm closing open tabs.
+        if confirm_quit_tabs == 'never':
             pass
-        elif confirm_quit == 'multiple-tabs' and count <= 1:
+        elif confirm_quit_tabs == 'multiple-tabs' and count <= 1:
             pass
         else:
             text = "Close {} {}?".format(
@@ -338,6 +340,25 @@ class MainWindow(QWidget):
                     self.win_id))
                 e.ignore()
                 return
+        # Confirm cancel of downloads.
+        download_manager = objreg.get('download-manager')
+        download_count = len(download_manager.downloads)
+        if confirm_quit_downloads is False:
+            pass
+        elif confirm_quit_downloads is True and download_count == 0:
+            pass
+        else:
+            text = "Cancel {} {}?".format(
+                download_count, "download" if download_count == 1
+                else "downloads")
+            confirmed = message.ask(self.win_id, text,
+                                    usertypes.PromptMode.yesno, default=False)
+            if not confirmed:
+                log.destroy.debug("Cancelling losing of downloads {}".format(
+                    self.win_id))
+                e.ignore()
+                return
+        # Proceed to shutdown application
         e.accept()
         objreg.get('app').geometry = bytes(self.saveGeometry())
         log.destroy.debug("Closing window {}".format(self.win_id))

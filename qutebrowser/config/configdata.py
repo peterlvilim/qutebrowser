@@ -203,9 +203,14 @@ DATA = collections.OrderedDict([
          SettingValue(typ.Int(), '2000'),
          "Time (in ms) to show messages in the statusbar for."),
 
-        ('confirm-quit',
-         SettingValue(typ.ConfirmQuit(), 'never'),
-         "Whether to confirm quitting the application."),
+        ('confirm-quit-tabs',
+         SettingValue(typ.ConfirmQuitTabs(), 'never'),
+         "Whether to confirm quitting the application when tabs are open."),
+
+        ('confirm-quit-downloads',
+         SettingValue(typ.Bool(), 'true'),
+         "Whether to confirm quitting the application when downloads are "
+         "running ."),
 
         ('display-statusbar-messages',
          SettingValue(typ.Bool(), 'false'),

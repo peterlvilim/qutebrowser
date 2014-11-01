@@ -1194,9 +1194,10 @@ class AcceptCookies(BaseType):
                                ('never', "Don't accept cookies at all."))
 
 
-class ConfirmQuit(BaseType):
+class ConfirmQuitTabs(BaseType):
 
-    """Whether to display a confirmation when the window is closed."""
+    """Whether to display a confirmation when the window is closed if tabs are
+    open."""
 
     valid_values = ValidValues(('always', "Always show a confirmation."),
                                ('multiple-tabs', "Show a confirmation if "

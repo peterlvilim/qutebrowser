@@ -27,7 +27,8 @@
 |<<ui-zoom-levels,zoom-levels>>|The available zoom levels, separated by commas.
 |<<ui-default-zoom,default-zoom>>|The default zoom level.
 |<<ui-message-timeout,message-timeout>>|Time (in ms) to show messages in the statusbar for.
-|<<ui-confirm-quit,confirm-quit>>|Whether to confirm quitting the application.
+|<<ui-confirm-quit-tabs,confirm-quit-tabs>>|Whether to confirm quitting the application when tabs are open.
+|<<ui-confirm-quit-downloads,confirm-quit-downloads>>|Whether to confirm quitting the application when downloads are running .
 |<<ui-display-statusbar-messages,display-statusbar-messages>>|Whether to display javascript statusbar messages.
 |<<ui-zoom-text-only,zoom-text-only>>|Whether the zoom factor on a frame applies only to the text or to all content.
 |<<ui-frame-flattening,frame-flattening>>|Whether to  expand each subframe to its contents.
@@ -337,9 +338,9 @@ Time (in ms) to show messages in the statusbar for.
 
 Default: +pass:[2000]+
 
-[[ui-confirm-quit]]
-=== confirm-quit
-Whether to confirm quitting the application.
+[[ui-confirm-quit-tabs]]
+=== confirm-quit-tabs
+Whether to confirm quitting the application when tabs are open.
 
 Valid values:
 
@@ -348,6 +349,12 @@ Valid values:
  * +never+: Never show a confirmation.
 
 Default: +pass:[never]+
+
+[[ui-confirm-quit-downloads]]
+=== confirm-quit-downloads
+Whether to confirm quitting the application when downloads are running .
+
+Default: +pass:[true]+
 
 [[ui-display-statusbar-messages]]
 === display-statusbar-messages

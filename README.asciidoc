@@ -233,8 +233,8 @@ Contributors, sorted by the number of commits in descending order:
 // QUTE_AUTHORS_START
 * Florian Bruhin
 * Claude
-* rikn00
 * Peter Vilim
+* rikn00
 // QUTE_AUTHORS_END
 
 Thanks / Similiar projects
